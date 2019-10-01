@@ -5,7 +5,6 @@ const app = express();
 
 var port = 3002;
 
-console.log('connection', db.connection);
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(express.static('public'));
