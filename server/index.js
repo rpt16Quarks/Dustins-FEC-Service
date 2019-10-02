@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('../database/index.js');
+const { Condition, Product } = require('../database/model.js');
 
 const app = express();
 
@@ -10,16 +10,5 @@ app.use(express.json());
 app.use(express.static('public'));
 
 
-
-
 app.listen(port, () => console.log(`App is listening on port ${port}`));
 
-
-db.connection.connect(function(err) {
-  console.log('connected!');
-  if (err) {
-    console.log('err', err);
-  } else {
-    console.log('connected!');
-  }
-});
