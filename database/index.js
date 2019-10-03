@@ -3,9 +3,9 @@ const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize( 'fec', 'root', '', {
   host: 'localhost',
-  // port: 3006,
   dialect: 'mysql'
 });
+
 const dbStatus = sequelize
   .authenticate()
   .then(() => {
