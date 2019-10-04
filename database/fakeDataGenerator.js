@@ -1,6 +1,6 @@
 const faker = require('faker');
 const { getRandNum, createRandNumString, getRandomElement, fillRandomPropertyKeys, randomizerWrapper } = require('./randomDataUtility');
-const noOfEntries = 2;
+const noOfEntries = 100;
 
 let products = [];
 
@@ -27,6 +27,7 @@ const unitsOfWeight = ['kg', 'g', 'lb', 'oz', 'mg', 'tons', 'metric tons'];
 
 //Product Object to be sent to db
 // to be optimized so that each property is an object with a required/optional field and a value field
+//also non faker randomization is buggy
 const productTemplate = {
   //required
   itemNumber: faker.finance.account(),

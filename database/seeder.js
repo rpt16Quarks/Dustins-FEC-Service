@@ -1,5 +1,5 @@
 const { Condition, Product } = require('./model.js');
-const {products} = require('./fakeDataGenerator.js');
+const { products } = require('./fakeDataGenerator.js');
 
 /******************Product Seed*************************/
 
@@ -10,7 +10,7 @@ Product.sync({force: true}).then(
     return Product
       .bulkCreate(productList)
       .then((records)=>{
-        console.log('Records Inserted', records);
+        console.log('Records Inserted');
       });
   }
 ).catch((error) => {
