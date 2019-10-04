@@ -10,7 +10,7 @@ Product.sync({force: true}).then(
     return Product
       .bulkCreate(productList)
       .then((records)=>{
-        console.log('Records Inserted');
+        console.log('Records Inserted', records);
       });
   }
 ).catch((error) => {
