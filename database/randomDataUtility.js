@@ -1,6 +1,6 @@
 //creates a randomNumber from 0 to quantity-1
-const getRandNum = (quantity) => {
-  const id = Math.floor(Math.random() * quantity);
+const getRandNum = (max) => {
+  const id = Math.floor(Math.random() * max);
   return id;
 };
 
@@ -21,6 +21,14 @@ const getRandomElement = (array) => {
   return array[getRandNum(arrLength)];
 };
 
+//wraps the utility functions so that the randomizing functions will execute for each new product
+const randomizerWrapper = (randomizerFunc, randomizerFuncInput) => {
+  if (!randomizerFuncInput) {
+    return randomizerFunc();
+  }
+  return randomizerFunc(randomizerFuncInput);
+};
+
 //fills the property object. inputs assume an object sorted with required inputs coming first and optional inputs coming after
 // const fillRandomPropertyKeys = (object, firstOptionalKey = null) => {
 
@@ -30,16 +38,14 @@ const fillRandomPropertyKeys = (object, firstOptionalKey = null) => {
   let optionalIndex;
   properties.forEach((element, index) => {
     if (element === firstOptionalKey) {
-      console.log('index', index);
       optionalIndex = index;
     }
   });
-  console.log('optionalIndex', optionalIndex);
   const optionalCount = getRandNum
-  (properties.length - optionalIndex) + optionalIndex;
-  //improve randomization algorithm if time permits
+  (properties.length - optionalIndex);
   let index = 0;
   for (let each in object) {
+    //improve randomization algorithm if time permits
     if (index < optionalIndex) {
       obj[each] = object[each];
       index++;
@@ -57,5 +63,6 @@ module.exports = {
   getRandNum,
   createRandNumString,
   getRandomElement,
-  fillRandomPropertyKeys
+  fillRandomPropertyKeys,
+  randomizerWrapper
 };

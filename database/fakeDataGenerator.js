@@ -1,11 +1,8 @@
 const faker = require('faker');
-const { getRandNum, createRandNumString, getRandomElement, fillRandomPropertyKeys } = require('./randomDataUtility');
-const noOfEntries = 1;
+const { getRandNum, createRandNumString, getRandomElement, fillRandomPropertyKeys, randomizerWrapper } = require('./randomDataUtility');
+const noOfEntries = 2;
 
 let products = [];
-
-
-
 
 /*********Choices Library***********/
 
@@ -18,6 +15,8 @@ const unitsOfMeasurement = ['ft', 'in', 'cm', 'mm', 'cm^2', 'cm^3', 'mm^3'];
 const unitsOfVolume = ['cm^3', 'mm^3', 'mL', 'L', 'oz', 'pt'];
 
 const unitsOfWeight = ['kg', 'g', 'lb', 'oz', 'mg', 'tons', 'metric tons'];
+
+
 
 
 
@@ -38,30 +37,35 @@ const productTemplate = {
   //required
   itemDescPhoto: faker.image.image(),
   //required
-  itemSpecCondition: getRandNum(8) - 1,
+  itemSpecCondition: randomizerWrapper(getRandNum, 8),
   //required
   itemSpecBrand: faker.company.companyName(),
-  itemSpecUpc: createRandNumString(12),
+  itemSpecUpc: randomizerWrapper(createRandNumString, 12),
   itemSpecManufacturer: faker.company.companyName(),
   itemSpecMpn: faker.random.alphaNumeric(10),
   itemSpecColor: faker.internet.color(),
-  itemSpecSize: createRandNumString(2) + ' ' + getRandomElement(unitsOfMeasurement),
+  itemSpecSize:
+    randomizerWrapper(createRandNumString, 2) + ' ' + randomizerWrapper(getRandomElement, unitsOfMeasurement),
+
   itemSpecStyle: faker.commerce.productAdjective(),
-  itemSpecVolume: createRandNumString(2) + ' ' + getRandomElement(unitsOfVolume),
-  itemSpecSeason: createRandNumString(2) + ' ' + getRandomElement(seasons),
+  itemSpecSeason: randomizerWrapper(getRandomElement, seasons),
   itemSpecGenre: faker.lorem.word(),
-  itemSpecWeight: getRandomElement(unitsOfWeight),
-  itemSpecFeatures: faker.lorem.words(),
-  itemSpecReturns: getRandomElement(returns),
+  itemSpecWeight:
+    randomizerWrapper(getRandNum, 100) + ' ' + randomizerWrapper(getRandomElement, unitsOfWeight),
+  itemSpecVolume:
+    randomizerWrapper(getRandNum, 1000) + ' ' + randomizerWrapper(getRandNum, 1000),
+  itemSpecReturns: randomizerWrapper(getRandomElement, returns),
   itemSpecMaterial: faker.commerce.productMaterial(),
-  itemSpecTax: createRandNumString(2) + '%',
-  itemSpecCapactiy: createRandNumString(3),
+  itemSpecTax: randomizerWrapper(createRandNumString, 2) + '%',
+  itemSpecCapactiy: randomizerWrapper(getRandNum, 1000),
 };
 
-const newProduct = fillRandomPropertyKeys(productTemplate, 'itemSpecUpc');
+const newProduct = () => {
+  return fillRandomPropertyKeys(productTemplate, 'itemSpecUpc');
+};
 
 for (let j = 0; j < noOfEntries; j++) {
-  products.push(newProduct);
+  products.push(newProduct());
 }
 
 

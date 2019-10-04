@@ -1,5 +1,6 @@
 const express = require('express');
 const { Condition, Product } = require('../database/model.js');
+const seeder = require('../database/seeder.js');
 
 const app = express();
 
