@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@webpack-cli/init": "^0.2.2",
+    "axios": "^0.19.0",
     "express": "^4.17.1",
     "mysql2": "^1.7.0",
     "nodemon": "^1.19.2",
@@ -30,6 +31,7 @@
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "bluebird": "^3.7.0",
     "enzyme": "^3.10.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "faker": "^4.1.0",

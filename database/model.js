@@ -26,7 +26,7 @@ Product.init({
   seller: Sequelize.STRING,
   itemDescName: Sequelize.STRING,
   itemDescPhoto: Sequelize.BLOB('long'),
-  itemSpecCondition: Sequelize.STRING,
+  itemSpecConditionId: Sequelize.STRING,
   itemSpecBrand: Sequelize.STRING,
   //end required properties
   itemSpecUpc: Sequelize.STRING,
@@ -54,6 +54,7 @@ Product.init({
 
 module.exports = {
   Condition,
-  Product
+  Product,
+  sequelize
 };
 

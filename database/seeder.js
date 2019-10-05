@@ -1,4 +1,4 @@
-const { Condition, Product } = require('./model.js');
+const { Condition, Product, sequelize } = require('./model.js');
 const { products } = require('./fakeDataGenerator.js');
 
 /******************Product Seed*************************/
@@ -7,13 +7,15 @@ var productList = products;
 
 Product.sync({force: true}).then(
   () => {
+    Product.hasOne(Condition);
     return Product
       .bulkCreate(productList)
       .then((records)=>{
-        console.log('Records Inserted', records);
+        console.log('Records Inserted');
       });
   }
 ).catch((error) => {
+
   console.log('error', error);
 });
 
@@ -29,7 +31,7 @@ var conditionsList = [
 
 Condition.sync({force: true}).then(
   () => {
-    Condition.hasMany(Product);
+    Product.hasOne(Condition);
     return Condition
       .bulkCreate(conditionsList)
       .then((records)=>{

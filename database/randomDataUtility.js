@@ -22,12 +22,12 @@ const getRandomElement = (array) => {
 };
 
 //wraps the utility functions so that the randomizing functions will execute for each new product
-const randomizerWrapper = (randomizerFunc, randomizerFuncInput) => {
-  if (!randomizerFuncInput) {
-    return randomizerFunc();
-  }
-  return randomizerFunc(randomizerFuncInput);
-};
+// const randomizerWrapper = (randomizerFunc, randomizerFuncInput) => {
+//   if (!randomizerFuncInput) {
+//     return randomizerFunc();
+//   }
+//   return randomizerFunc(randomizerFuncInput);
+// };
 
 //fills the property object. inputs assume an object sorted with required inputs coming first and optional inputs coming after
 // const fillRandomPropertyKeys = (object, firstOptionalKey = null) => {
@@ -64,5 +64,5 @@ module.exports = {
   createRandNumString,
   getRandomElement,
   fillRandomPropertyKeys,
-  randomizerWrapper
+  // randomizerWrapper
 };
